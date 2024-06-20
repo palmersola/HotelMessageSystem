@@ -1,0 +1,28 @@
+[
+  {
+    "id": "1001",
+    "companyId": 1,
+    "message": "welcome to Hotel California!"
+   
+  },
+  {
+     "id": "1002",
+        "companyId": 2,
+        "message": "welcome to The Grand Budapest Hotel!"
+  },
+  {
+     "id": "1003",
+        "companyId": 3,
+        "message": "welcome to The Heartbreak Hotel!"
+  },
+  {
+    "id": "1005",
+       "companyId": 4,
+       "message": "welcome to The Prancing Pony!"
+  },
+  {
+    "id": "1006",
+       "companyId": 5,
+       "message": "welcome to The Fawlty Towers!"
+  }
+]
