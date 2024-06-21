@@ -10,7 +10,11 @@ export class Guest {
     };
   }
 
-  getName = () => this.firstName;
+  getFirstName = () => this.firstName;
 
-  getRoom = () => this.reservation.roomNumber;
+  getLastName = () => this.lastName;
+
+  getFullName = () => `${this.firstName} ${this.lastName}`;
+
+  getRoom = () => "Room " + this.reservation.roomNumber;
 }
