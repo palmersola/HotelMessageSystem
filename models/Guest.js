@@ -1,6 +1,7 @@
 export class Guest {
   constructor(id, first, last, res) {
     this.id = id;
+    this.name = `${first} ${last}`
     this.firstName = first;
     this.lastName = last;
     this.reservation = {

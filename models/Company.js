@@ -14,7 +14,7 @@ export class Company {
     let j =
       new Date().getUTCHours() - (i === "US/Eastern" ? 4 : i === "US/Central" ? 5 : i === "US/Mountain" ? 6 : 7);
 
-    return `Good ${j > 3 && j < 12 ? "morning " : j > 11 && j < 18 ? "afternoon " : j > 17 || j < 4 ? "evening " : "day "}`
+    return `Good ${j > 3 && j < 12 ? "morning" : j > 11 && j < 18 ? "afternoon" : j > 17 || j < 4 ? "evening" : "day"}`
       ;
   };
 

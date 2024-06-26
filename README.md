@@ -2,7 +2,12 @@
 
 Created by Palmer Sola
 
-## Installation and Use
+## EDIT TO PROJECT
+
+I believe I misunderstood the project and would like to resubmit. I just added command prompt support, allowing the user to navigate the project
+much easier. The project details said no GUI neccesary, which I thought meant no command line either. Please review and reconsider, thank you.
+
+### Installation and Use
 
 To run this program, do the following:
 
@@ -12,7 +17,7 @@ To run this program, do the following:
 - The variables are accessable to manipulate via the index.js file. There are comments leading towards which variables can be manipulated
 - To run program use the command node index.js
 
-## About
+### About
 
 My first mental draft of this project was written in Java, but as soon as I realized my premium license for IntelliJ had ended, I switched to
 JavaScript. I am more comfortable and familiar with JavaScript overall. I appreciate its flexibility, especially within the confines of a short,
