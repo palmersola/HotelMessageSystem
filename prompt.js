@@ -1,6 +1,9 @@
 import inquirer from "inquirer";
+import * as fs from 'node:fs'
 import { companies } from "./js/companies.js";
 import { guests } from "./js/guests.js";
+import { templates } from "./js/templates.js";
+import { log } from "node:console";
 
 let hotel
 let guest
@@ -41,15 +44,20 @@ const promptChoice = () => {
       lastName = guest.getLastName()
       roomNumber = guest.getRoom()
 
+
       let defaultPrompt = `${timeGreeting} ${firstName}, welcome to ${hotelName}! ${roomNumber} is now ready for you. Enjoy your stay, and let us know if you need anything.`;
 
       inquirer.prompt({
             type: "list",
-            name: "prompt",
-            message: "Select default prompt or custom prompt",
-            choices: ["Default", "Custom"]
+            name: "prompts",
+            message: "Select a prompt or create a custom prompt",
+            choices: templates
       })
-            .then((answer) => answer.prompt === "Default" ? promptConstruct(defaultPrompt) : createCustom())
+            .then((answer) =>
+                  //console.log(answer.prompts)
+
+                  answer.prompts === 'Custom' ? createCustom() : promptConstruct(answer.prompts)
+            )
 
 }
 
@@ -59,16 +67,24 @@ const createCustom = () =>
             name: "custom",
             message: "Enter custom prompt below. To use Hotel or Guest data, please wrap them as such: ${nameHere} \nAVAILABLE VARIABLES:\nfirstName\nlastName\nhotelName\ntimeGreeting\nroomNumber\n"
       })
-            .then((answer) => promptConstruct(eval(`\`${answer.custom}\``)))
+            .then((answer) => {
+                  templates.push({ "name": answer.custom })
+                  let write = JSON.stringify(templates)
+                  fs.writeFileSync("./data/Templates.json", write)
+                  promptConstruct(answer.custom)
 
-const promptConstruct = (message) =>
+            })
+
+const promptConstruct = (message) => {
+      let prompt = eval(`\`${message}\``)
       inquirer.prompt({
             type: "list",
             name: "confirm",
-            message: `Send Message? \n ${message}`,
+            message: `Send Message? \n ${prompt}`,
             choices: ["Yes", "No"]
       })
             .then((answer) => answer.confirm === "No" ? promptChoice() : exitProgram())
+}
 
 const exitProgram = () =>
       inquirer.prompt({
